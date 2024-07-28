@@ -12,8 +12,11 @@ class App extends Component {
 		return (
 			<div className="App">
 				<ParticlesComponent id="particles" />
-				<Navigation />
-				<Logo />
+				<div className="navbar">
+					<Navigation />
+					<Logo />
+				</div>
+
 				<Rank />
 				<ImageLinkForm />
 

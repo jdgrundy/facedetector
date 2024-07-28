@@ -9,3 +9,10 @@
 	width: 100%;
 	z-index: -1;
 }
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-direction: row-reverse;
+}
