@@ -1,0 +1,27 @@
+.bounding-box {
+	position: absolute;
+	box-shadow: 0 0 0 3px #149df2 inset;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.box-label {
+	position: absolute;
+	bottom: -10px;
+	right: -30px;
+	padding: 0 0.5em;
+	/* height: 15px;
+	width: fit-content; */
+	background-color: #149df2;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	/* box-shadow: 1px 1px 2px; */
+}
+
+.box-label-text {
+	padding: 0;
+	margin: 0.1em 0.5em;
+}
