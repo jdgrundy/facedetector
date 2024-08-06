@@ -8,7 +8,7 @@ const SignIn = ({ onRouteChange }) => {
 		>
 			<article className="pa4 black-80 w-70">
 				<h1 className="pa0">Sign up to Face Detector</h1>
-				<form action="sign-up_submit" method="get" acceptCharset="utf-8">
+				<div action="sign-up_submit" method="get" acceptCharset="utf-8">
 					<fieldset id="sign_up" className="ba b--transparent ph0 mh0">
 						<legend className="ph0 mh0 fw6 f1 clip">Sign Up</legend>
 						<div className="mt3">
@@ -16,7 +16,7 @@ const SignIn = ({ onRouteChange }) => {
 								Email address
 							</label>
 							<input
-								className="pa2 input-reset ba bg-transparent w-100 measure"
+								className="pa2 input-reset ba br3 w-100 measure"
 								type="email"
 								name="email-address"
 								id="email-address"
@@ -27,7 +27,7 @@ const SignIn = ({ onRouteChange }) => {
 								Password
 							</label>
 							<input
-								className="pa2 input-reset ba bg-transparent w-100 measure"
+								className="pa2 input-reset ba br3 w-100 measure"
 								type="password"
 								name="password"
 								id="password"
@@ -48,7 +48,7 @@ const SignIn = ({ onRouteChange }) => {
 							value={"Register"}
 						/>
 					</div>
-				</form>
+				</div>
 			</article>
 		</article>
 	);

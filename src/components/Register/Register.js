@@ -1,6 +1,6 @@
 import React from "react";
 
-const Register = () => {
+const Register = ({ onRouteChange }) => {
 	return (
 		<article
 			className="br3 shadow-2 mv4 w-70 center"
@@ -9,50 +9,53 @@ const Register = () => {
 			<article className="pa4 black-80 w-70">
 				<h1 className="pa0">Register</h1>
 				<h2 className="pa0">Create a new Face Detector account</h2>
-				<form action="sign-up_submit" method="get" acceptCharset="utf-8">
+				<div action="sign-up_submit" method="get" acceptCharset="utf-8">
 					<fieldset id="register" className="ba b--transparent ph0 mh0">
 						<legend className="ph0 mh0 fw6 f1 clip">Sign Up</legend>
 						<div className="mt3">
-							<label className="db fw4 lh-copy f6" htmlFor="name">
+							<label className="db fw4 lh-copy f6" htmlFor="reg-name">
 								Name
 							</label>
 							<input
-								className="pa2 input-reset ba w-100 measure"
+								className="pa2 input-reset br3 ba w-100 measure"
 								type="text"
-								name="name"
+								name="reg-name"
 								id="reg-name"
+								autoComplete="given-name"
 							/>
 						</div>
 						<div className="mt3">
-							<label className="db fw4 lh-copy f6" htmlFor="location">
+							<label className="db fw4 lh-copy f6" htmlFor="reg-country">
 								Country
 							</label>
 							<input
-								className="pa2 input-reset ba w-100 measure"
+								className="pa2 input-reset br3 ba w-100 measure"
 								type="text"
-								name="country"
+								name="reg-country"
 								id="reg-country"
+								autoComplete="country"
 							/>
 						</div>
 						<div className="mt3">
-							<label className="db fw4 lh-copy f6" htmlFor="email-address">
+							<label className="db fw4 lh-copy f6" htmlFor="reg-email-address">
 								Email address
 							</label>
 							<input
-								className="pa2 input-reset ba w-100 measure"
+								className="pa2 input-reset br3 ba w-100 measure"
 								type="email"
-								name="email-address"
+								name="reg-email-address"
 								id="reg-email-address"
+								autoComplete="off"
 							/>
 						</div>
 						<div className="mt3">
-							<label className="db fw4 lh-copy f6" htmlFor="password">
+							<label className="db fw4 lh-copy f6" htmlFor="reg-password">
 								Password
 							</label>
 							<input
-								className="b pa2 input-reset ba w-100"
+								className="b pa2 input-reset br3 ba w-100"
 								type="password"
-								name="password"
+								name="reg-password"
 								id="reg-password"
 							/>
 						</div>
@@ -63,8 +66,14 @@ const Register = () => {
 							type="submit"
 							value={"Register"}
 						/>
+						<input
+							className="tc ph4 pa2 fw2 f4 w-30 br3 b--light-blue bg-lightest-gray ba dim pointer"
+							type="cancel"
+							onClick={() => onRouteChange("SignIn")}
+							value={"Cancel"}
+						/>
 					</div>
-				</form>
+				</div>
 			</article>
 		</article>
 	);
