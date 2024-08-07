@@ -58,6 +58,10 @@ class App extends Component {
 		};
 	}
 
+	// componentDidMount() {
+	// 	fetch("http://localhost:3000").then((res) => res.json().then(console.log));
+	// }
+
 	getFaceBox = (data) => {
 		// console.log(data);
 		const boundingBox =

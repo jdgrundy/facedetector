@@ -21,21 +21,9 @@ const Register = ({ onRouteChange }) => {
 								type="text"
 								name="reg-name"
 								id="reg-name"
-								autoComplete="given-name"
 							/>
 						</div>
-						<div className="mt3">
-							<label className="db fw4 lh-copy f6" htmlFor="reg-country">
-								Country
-							</label>
-							<input
-								className="pa2 input-reset br3 ba w-100 measure"
-								type="text"
-								name="reg-country"
-								id="reg-country"
-								autoComplete="country"
-							/>
-						</div>
+
 						<div className="mt3">
 							<label className="db fw4 lh-copy f6" htmlFor="reg-email-address">
 								Email address
@@ -45,9 +33,9 @@ const Register = ({ onRouteChange }) => {
 								type="email"
 								name="reg-email-address"
 								id="reg-email-address"
-								autoComplete="off"
 							/>
 						</div>
+
 						<div className="mt3">
 							<label className="db fw4 lh-copy f6" htmlFor="reg-password">
 								Password
@@ -64,6 +52,7 @@ const Register = ({ onRouteChange }) => {
 						<input
 							className="tc ph4 pa2 fw2 f4 br3 b--light-blue bg-lightest-blue ba dim pointer"
 							type="submit"
+							onClick={() => onRouteChange("SignIn")}
 							value={"Register"}
 						/>
 						<input
