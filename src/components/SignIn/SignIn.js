@@ -18,6 +18,7 @@ class SignIn extends React.Component {
 	};
 
 	onSubmitSignIn = () => {
+		//this is the same as making the POST request to :3000 using Postman...
 		fetch("http://localhost:3000/Signin", {
 			method: "post",
 			headers: { "content-type": "application/json" },
@@ -27,8 +28,9 @@ class SignIn extends React.Component {
 			}),
 		})
 			.then((response) => response.json())
-			.then((data) => {
-				if (data === "success") {
+			.then((user) => {
+				if (user.id) {
+					this.props.loadUser(user);
 					this.props.onRouteChange("Home");
 				}
 			});
@@ -43,7 +45,7 @@ class SignIn extends React.Component {
 			>
 				<article className="pa4 black-80 w-70">
 					<h1 className="pa0">Sign up to Face Detector</h1>
-					<div action="sign-up_submit" method="get" acceptCharset="utf-8">
+					<div>
 						<fieldset id="sign_up" className="ba b--transparent ph0 mh0">
 							<legend className="ph0 mh0 fw6 f1 clip">Sign Up</legend>
 							<div className="mt3">
