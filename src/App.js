@@ -17,8 +17,6 @@ const returnClarifaiOptions = (imageURL) => {
 	const USER_ID = "jdgrundy";
 	const APP_ID = "facedetector";
 
-	// const IMAGE_URL = imageURL;
-
 	const raw = JSON.stringify({
 		user_app_id: {
 			user_id: USER_ID,
@@ -47,23 +45,25 @@ const returnClarifaiOptions = (imageURL) => {
 	return requestOptions;
 };
 
+const intialState = {
+	input: "",
+	imageURL: "",
+	box: {},
+	route: "SignIn",
+	isSignedIn: false,
+	user: {
+		id: "",
+		name: "",
+		email: "",
+		entries: 0,
+		joined: "",
+	},
+};
+
 class App extends Component {
 	constructor() {
 		super();
-		this.state = {
-			input: "",
-			imageURL: "",
-			box: {},
-			route: "SignIn",
-			isSignedIn: false,
-			user: {
-				id: "",
-				name: "",
-				email: "",
-				entries: 0,
-				joined: "",
-			},
-		};
+		this.state = intialState;
 	}
 
 	loadUser = (data) => {
@@ -109,39 +109,6 @@ class App extends Component {
 		this.setState({ input: event.target.value });
 	};
 
-	// onButtonSubmit = () => {
-	// 	this.setState({ imageURL: this.state.input }, () => {
-	// 		fetch(
-	// 			"https://api.clarifai.com/v2/models/" +
-	// 				MODEL_ID +
-	// 				"/versions/" +
-	// 				MODEL_VERSION_ID +
-	// 				"/outputs",
-	// 			returnClarifaiOptions(this.state.imageURL)
-	// 		)
-	// 			.then((result) => {
-	// 				this.displayFaceBox(this.getFaceBox(result));
-	// 			})
-	// 			.then((response) => {
-	// 				if (response) {
-	// 					fetch("http://localhost:3000/image", {
-	// 						method: "put",
-	// 						headers: { "content-type": "application/json" },
-	// 						body: JSON.stringify({ id: this.state.user.id }),
-	// 					})
-	// 						.then((response) => response.json())
-	// 						.then((count) => {
-	// 							this.setState(
-	// 								Object.assign(this.state.user, { entries: count })
-	// 							);
-	// 						});
-	// 				}
-	// 			})
-
-	// 			.catch((error) => console.log("error...", error));
-	// 	});
-	// };
-
 	onButtonSubmit = () => {
 		this.setState({ imageURL: this.state.input }, () => {
 			fetch(
@@ -165,7 +132,8 @@ class App extends Component {
 								this.setState(
 									Object.assign(this.state.user, { entries: count })
 								);
-							});
+							})
+							.catch(console.log);
 					}
 					this.displayFaceBox(this.getFaceBox(result));
 				})
@@ -174,6 +142,11 @@ class App extends Component {
 	};
 
 	onRouteChange = (route) => {
+		if (route === "SignIn") {
+			this.setState(intialState);
+		} else if (route === "Home") {
+			this.setState({ isSignedIn: true });
+		}
 		this.setState({ route: route });
 	};
 
@@ -186,7 +159,10 @@ class App extends Component {
 					<div>
 						<div className="navbar">
 							<Logo />
-							<Navigation onRouteChange={this.onRouteChange} />
+							<Navigation
+								isSignedIn={this.state.isSignedIn}
+								onRouteChange={this.onRouteChange}
+							/>
 						</div>
 						<Rank
 							name={this.state.user.name}
